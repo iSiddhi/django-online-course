@@ -10,7 +10,7 @@ class Lesson(models.Model):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
-    grade = models.IntegerField(default=1)   # IMPORTANT
+    grade = models.IntegerField(default=1)
 
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
@@ -34,7 +34,6 @@ class Submission(models.Model):
     def __str__(self):
         return f"{self.enrollment.user.username} submission"
 
-# REQUIRED
 class Instructor(models.Model):
     name = models.CharField(max_length=200)
 
