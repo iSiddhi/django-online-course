@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Mock Exam</h1>
+
+{% if questions %}
+    <form method="POST" action="/submit/">
+        {% csrf_token %}
+
+        {% for question in questions %}
+            <p><b>{{ question.question_text }}</b></p>
+
+            {% for choice in question.choice_set.all %}
+                <input type="radio" name="question_{{ question.id }}" value="{{ choice.id }}">
+                {{ choice.choice_text }} <br>
+            {% endfor %}
+        {% endfor %}
+
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% else %}
+    <h2>No questions available ❌</h2>
+{% endif %}
+
+</body>
+</html>
