@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
 from .models import Course, Lesson, Question, Choice, Submission, Enrollment
 
 # Inline for choices under question
