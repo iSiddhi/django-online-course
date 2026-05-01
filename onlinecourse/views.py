@@ -4,7 +4,12 @@ from .models import Course, Question, Choice, Enrollment, Submission
 def show_exam(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     questions = Question.objects.filter(lesson__course=course)
-    return render(request, 'exam.html', {'questions': questions, 'course': course})
+
+    return render(request, 'exam.html', {
+        'questions': questions,
+        'course': course
+    })
+
 
 def submit(request, course_id):
     if request.method == 'POST':
@@ -20,11 +25,12 @@ def submit(request, course_id):
 
         return redirect('show_exam_result', course_id=course.id, submission_id=submission.id)
 
+
 def show_exam_result(request, course_id, submission_id):
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=submission_id)
 
-    selected_ids = [c.id for c in submission.choices.all()]
+    selected_ids = [choice.id for choice in submission.choices.all()]
     questions = Question.objects.filter(lesson__course=course)
 
     total_score = 0
