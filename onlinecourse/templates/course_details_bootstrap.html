@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Details</title>
+</head>
+<body>
+
+<h1>{{ course.name }}</h1>
+
+<ul>
+{% for lesson in lessons %}
+    <li>{{ lesson.title }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
