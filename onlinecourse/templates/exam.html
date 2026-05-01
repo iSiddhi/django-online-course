@@ -1,4 +1,4 @@
-<form method="POST" action="/submit/">
+<form method="POST" action="{% url 'submit' course.id %}">
     {% csrf_token %}
 
     {% for question in questions %}
@@ -8,7 +8,6 @@
             <input type="radio" name="{{ question.id }}" value="{{ choice.id }}">
             {{ choice.choice_text }} <br>
         {% endfor %}
-
     {% endfor %}
 
     <button type="submit">Submit</button>
