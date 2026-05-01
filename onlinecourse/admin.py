@@ -17,7 +17,12 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
     list_display = ('title',)
 
-admin.site.register(Course)
+# 🔥 THIS IS THE MISSING PART
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
