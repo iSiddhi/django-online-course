@@ -17,7 +17,6 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
     list_display = ('title',)
 
-# 🔥 THIS IS THE MISSING PART
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
